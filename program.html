@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Πρόγραμμα Σπουδών | ΠΜΣ Πληροφοριακά Συστήματα ΔΠΘ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            duthCrimson: '#8B1538',
+            duthHover: '#9E1B32',
+            techNavy: '#0F172A',
+            slateLight: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slateLight text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ACTIVE STUDENT QUICK PORTAL SHORTCUT BAR -->
+  <div class="bg-techNavy text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Πύλη Φοιτητών &amp; Ψηφιακές Υπηρεσίες:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-semibold">
+        <a href="https://eclass.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">e-Class</a>
+        <a href="https://mail.google.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Webmail</a>
+        <a href="https://students.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">ClassWeb</a>
+        <a href="https://cloud.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">MAIS Cloud</a>
+        <a href="#timetable" class="hover:text-white transition-colors text-amber-400">Ωρολόγιο Πρόγραμμα</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="ΔΠΘ MAIS Logo" class="h-12 w-auto object-contain">
+          <div class="hidden sm:block border-l border-slate-300 pl-3">
+            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Δημοκρίτειο Πανεπιστήμιο Θράκης</span>
+            <span class="block text-sm font-extrabold text-slate-900">ΠΜΣ Πληροφοριακά Συστήματα</span>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+          <a href="index.html" class="text-slate-700 hover:text-duthCrimson">Αρχική</a>
+          <a href="program.html" class="text-duthCrimson font-bold border-b-2 border-duthCrimson pb-1">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html" class="text-slate-700 hover:text-duthCrimson">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html" class="text-slate-700 hover:text-duthCrimson">Διδάσκοντες</a>
+          <a href="research.html" class="text-slate-700 hover:text-duthCrimson">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html" class="text-slate-700 hover:text-duthCrimson">Επικοινωνία</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="admissions.html" class="px-5 py-2.5 rounded-lg bg-duthCrimson text-white font-bold text-sm shadow">
+            Αίτηση 2026-2027
+          </a>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 text-slate-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT MENU DRAWER -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex-col justify-end sm:justify-start">
+    <div class="bg-white w-full max-w-sm ml-auto h-full p-6 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <img src="assets/logo.png" alt="MAIS Logo" class="h-10 w-auto">
+          <button id="close-mobile-menu" class="p-2 text-slate-500 hover:text-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-4 font-semibold text-slate-700">
+          <a href="index.html">Αρχική</a>
+          <a href="program.html" class="text-duthCrimson font-bold">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html">Διδάσκοντες</a>
+          <a href="research.html">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html">Επικοινωνία</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-slate-200">
+        <a href="admissions.html" class="block w-full text-center py-3 bg-duthCrimson text-white font-bold rounded-lg shadow">
+          Αίτηση Συμμετοχής
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB / HERO -->
+  <section class="bg-techNavy text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-rose-400 font-bold text-xs uppercase tracking-wider block mb-2">Ακαδημαϊκή Διάρθρωση</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold">Πρόγραμμα Σπουδών &amp; Μαθήματα</h1>
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+        Συνολικό πιστωτικό φορτίο 90 ECTS. Επιλέξτε μεταξύ πλήρους φοίτησης (3 εξάμηνα) ή μερικής φοίτησης (6 εξάμηνα).
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- STUDY MODE TOGGLE SWITCH -->
+    <div id="study-mode-container" class="mb-12 flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-xl border border-slate-200 shadow-sm gap-4">
+      <div>
+        <h2 class="text-lg font-bold text-slate-900">Τρόπος Φοίτησης</h2>
+        <p class="text-xs text-slate-500">Επιλέξτε πρόγραμμα παρακολούθησης για να δείτε την κατανομή των μαθημάτων ανά εξάμηνο.</p>
+      </div>
+      <div class="bg-slate-100 p-1.5 rounded-lg flex gap-2">
+        <button id="btn-fulltime" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow bg-duthCrimson text-white">
+          ΠΛΗΡΗΣ ΦΟΙΤΗΣΗ (3 Εξάμηνα)
+        </button>
+        <button id="btn-parttime" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-200">
+          ΜΕΡΙΚΗ ΦΟΙΤΗΣΗ (6 Εξάμηνα)
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB CONTENT 1: FULL-TIME STUDY MODE -->
+    <div id="content-fulltime" class="space-y-6">
+
+      <!-- SEMESTER 1 -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button class="accordion-btn w-full px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors" data-target="sem1-body">
+          <span class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-duthCrimson text-white text-xs rounded-full font-bold">1ο Εξάμηνο</span>
+            <span class="text-base sm:text-lg">Χειμερινό Εξάμηνο (30 ECTS)</span>
+          </span>
+          <svg class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="sem1-body" class="p-6">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-xs text-slate-500 uppercase tracking-wider">
+                  <th class="py-3 px-2">Κωδικός</th>
+                  <th class="py-3 px-2">Τίτλος Μαθήματος</th>
+                  <th class="py-3 px-2 text-center">Ώρες/Εβδ.</th>
+                  <th class="py-3 px-2 text-center">ECTS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700">
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ101</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Σχεδιασμός &amp; Ανάπτυξη Πληροφοριακών Συστημάτων</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ102</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Διαχείριση Βάσεων Δεδομένων &amp; Μεγάλων Δεδομένων (Big Data)</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ103</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Διοίκηση &amp; Ασφάλεια Πληροφοριακών Συστημάτων</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMESTER 2 -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button class="accordion-btn w-full px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors" data-target="sem2-body">
+          <span class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-duthCrimson text-white text-xs rounded-full font-bold">2ο Εξάμηνο</span>
+            <span class="text-base sm:text-lg">Εαρινό Εξάμηνο (30 ECTS)</span>
+          </span>
+          <svg class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="sem2-body" class="p-6">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-xs text-slate-500 uppercase tracking-wider">
+                  <th class="py-3 px-2">Κωδικός</th>
+                  <th class="py-3 px-2">Τίτλος Μαθήματος</th>
+                  <th class="py-3 px-2 text-center">Ώρες/Εβδ.</th>
+                  <th class="py-3 px-2 text-center">ECTS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700">
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ201</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Ηλεκτρονικό Επιχειρείν &amp; Καινοτομία (E-Business)</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ202</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Αναλυτική Δεδομένων &amp; Επιχειρηματική Ευφυΐα (Business Intelligence)</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-2 font-mono font-bold text-duthCrimson">ΜΑΙΣ203</td>
+                  <td class="py-3 px-2 font-semibold text-slate-900">Υπολογιστικό Νέφος &amp; Διαδικτυακές Εφαρμογές (Cloud Computing)</td>
+                  <td class="py-3 px-2 text-center">3</td>
+                  <td class="py-3 px-2 text-center font-bold text-slate-900">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMESTER 3 -->
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button class="accordion-btn w-full px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-left font-bold text-slate-900 hover:bg-slate-100 transition-colors" data-target="sem3-body">
+          <span class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-duthCrimson text-white text-xs rounded-full font-bold">3ο Εξάμηνο</span>
+            <span class="text-base sm:text-lg">Εκπόνηση Μεταπτυχιακής Διπλωματικής Εργασίας (30 ECTS)</span>
+          </span>
+          <svg class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="sem3-body" class="p-6">
+          <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm text-slate-700 space-y-2">
+            <p class="font-bold text-slate-900">ΜΑΙΣ300 - Μεταπτυχιακή Διπλωματική Εργασία (30 ECTS)</p>
+            <p>
+              Η εκπόνηση της διπλωματικής εργασίας πραγματοποιείται υπό την επίβλεψη μέλους ΔΕΠ του Τμήματος. Περιλαμβάνει την εκπόνηση πρωτότυπης επιστημονικής ή εφαρμοσμένης έρευνας στον τομέα των Πληροφοριακών Συστημάτων και δημόσια υποστήριξη ενώπιον 3μελούς εξεταστικής επιτροπής.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB CONTENT 2: PART-TIME STUDY MODE -->
+    <div id="content-parttime" class="space-y-6 hidden">
+      <div class="p-6 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-sm mb-6">
+        <span class="font-bold">Σημείωση Μερικής Φοίτησης:</span> Το πρόγραμμα μερικής φοίτησης εκτείνεται σε 6 ακαδημαϊκά εξάμηνα με μειωμένο φόρτο μαθημάτων ανά εξάμηνο (15 ECTS/εξάμηνο), διευκολύνοντας πλήρως τους εργαζόμενους φοιτητές.
+      </div>
+
+      <!-- SEMESTERS 1 to 6 BRIEF -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="p-4 bg-white rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-duthCrimson">1ο Εξάμηνο (15 ECTS)</span>
+          <p class="font-semibold text-slate-900 text-sm mt-1">Σχεδιασμός &amp; Ανάπτυξη ΠΣ / Διοίκηση ΠΣ</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-duthCrimson">2ο Εξάμηνο (15 ECTS)</span>
+          <p class="font-semibold text-slate-900 text-sm mt-1">Διαχείριση Βάσεων Δεδομένων &amp; Big Data</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-duthCrimson">3ο Εξάμηνο (15 ECTS)</span>
+          <p class="font-semibold text-slate-900 text-sm mt-1">Ηλεκτρονικό Επιχειρείν &amp; Καινοτομία</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-duthCrimson">4ο Εξάμηνο (15 ECTS)</span>
+          <p class="font-semibold text-slate-900 text-sm mt-1">Αναλυτική Δεδομένων &amp; Cloud Computing</p>
+        </div>
+        <div class="p-4 sm:col-span-2 bg-white rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-duthCrimson">5ο &amp; 6ο Εξάμηνο (30 ECTS)</span>
+          <p class="font-semibold text-slate-900 text-sm mt-1">Εκπόνηση &amp; Συγγραφή Μεταπτυχιακής Διπλωματικής Εργασίας</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMETABLE & GUIDES SECTION -->
+    <section id="timetable" class="mt-16 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <span class="text-duthCrimson font-bold text-xs uppercase tracking-wider block mb-1">Χρήσιμα Έγγραφα</span>
+          <h2 class="text-2xl font-extrabold text-slate-900">Οδηγός Σπουδών &amp; Ωρολόγιο Πρόγραμμα</h2>
+          <p class="text-slate-600 text-sm mt-1">Κατεβάστε τον αναλυτικό οδηγό σπουδών και το πρόγραμμα διαλέξεων του τρέχοντος εξαμήνου.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="#" class="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-2 border border-slate-300">
+            <svg class="w-4 h-4 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Οδηγός Σπουδών (PDF)
+          </a>
+          <a href="#" class="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-2 border border-slate-300">
+            <svg class="w-4 h-4 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Ωρολόγιο Πρόγραμμα 2025-2026
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-techNavy text-slate-400 text-sm border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <img src="assets/logo.png" alt="ΔΠΘ MAIS Logo" class="h-12 w-auto bg-white/10 p-1 rounded mb-4">
+          <p class="text-xs text-slate-400">Δημοκρίτειο Πανεπιστήμιο Θράκης<br>Τμήμα Διοικητικής Επιστήμης και Τεχνολογίας</p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Πλοήγηση</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-white">Αρχική</a></li>
+            <li><a href="program.html" class="hover:text-white">Πρόγραμμα Σπουδών</a></li>
+            <li><a href="admissions.html" class="hover:text-white">Εισαγωγή &amp; Δίδακτρα</a></li>
+            <li><a href="faculty.html" class="hover:text-white">Διδάσκοντες</a></li>
+            <li><a href="contact.html" class="hover:text-white">Επικοινωνία</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Ψηφιακές Υπηρεσίες</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="https://eclass.mst.duth.gr" target="_blank" class="hover:text-white">e-Class ΔΠΘ</a></li>
+            <li><a href="https://students.duth.gr" target="_blank" class="hover:text-white">ClassWeb</a></li>
+            <li><a href="https://cloud.mst.duth.gr" target="_blank" class="hover:text-white">MAIS Cloud</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Επικοινωνία</h4>
+          <p class="text-xs text-slate-400">
+            Πανεπιστημιούπολη Καβάλας, 65404<br>
+            Τηλ: 2510 462395<br>
+            Email: mais@mst.duth.gr
+          </p>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+        &copy; 2026 ΠΜΣ «Πληροφοριακά Συστήματα» — Δημοκρίτειο Πανεπιστήμιο Θράκης.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
