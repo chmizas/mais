@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ΠΜΣ Πληροφοριακά Συστήματα | ΔΠΘ (MAIS DUTH)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            duthCrimson: '#8B1538',
+            duthHover: '#9E1B32',
+            techNavy: '#0F172A',
+            slateLight: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slateLight text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ACTIVE STUDENT QUICK PORTAL SHORTCUT BAR -->
+  <div class="bg-techNavy text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Πύλη Φοιτητών &amp; Ψηφιακές Υπηρεσίες:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-semibold">
+        <a href="https://eclass.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          e-Class
+        </a>
+        <a href="https://mail.google.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Webmail</a>
+        <a href="https://students.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">ClassWeb</a>
+        <a href="https://cloud.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">MAIS Cloud</a>
+        <a href="program.html#timetable" class="hover:text-white transition-colors text-amber-400">Ωρολόγιο Πρόγραμμα</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <!-- Logo Branding -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/logo.png" alt="ΔΠΘ MAIS Logo" class="h-12 w-auto object-contain">
+          <div class="hidden sm:block border-l border-slate-300 pl-3">
+            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Δημοκρίτειο Πανεπιστήμιο Θράκης</span>
+            <span class="block text-sm font-extrabold text-slate-900 group-hover:text-duthCrimson transition-colors">ΠΜΣ Πληροφοριακά Συστήματα</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+          <a href="index.html" class="text-duthCrimson font-bold border-b-2 border-duthCrimson pb-1">Αρχική</a>
+          <a href="program.html" class="text-slate-700 hover:text-duthCrimson transition-colors">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html" class="text-slate-700 hover:text-duthCrimson transition-colors">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html" class="text-slate-700 hover:text-duthCrimson transition-colors">Διδάσκοντες</a>
+          <a href="research.html" class="text-slate-700 hover:text-duthCrimson transition-colors">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html" class="text-slate-700 hover:text-duthCrimson transition-colors">Επικοινωνία</a>
+        </nav>
+
+        <!-- Call To Action Button -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="admissions.html" class="px-5 py-2.5 rounded-lg bg-duthCrimson hover:bg-duthHover text-white font-bold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+            Αίτηση 2026-2027
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none" aria-label="Μενού">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT MENU DRAWER -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex-col justify-end sm:justify-start">
+    <div class="bg-white w-full max-w-sm ml-auto h-full p-6 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <img src="assets/logo.png" alt="MAIS Logo" class="h-10 w-auto">
+          <button id="close-mobile-menu" class="p-2 text-slate-500 hover:text-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-4 font-semibold text-slate-700">
+          <a href="index.html" class="text-duthCrimson font-bold">Αρχική</a>
+          <a href="program.html" class="hover:text-duthCrimson">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html" class="hover:text-duthCrimson">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html" class="hover:text-duthCrimson">Διδάσκοντες</a>
+          <a href="research.html" class="hover:text-duthCrimson">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html" class="hover:text-duthCrimson">Επικοινωνία</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-slate-200 space-y-3">
+        <a href="admissions.html" class="block w-full text-center py-3 bg-duthCrimson text-white font-bold rounded-lg shadow">
+          Αίτηση Συμμετοχής
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-techNavy text-white overflow-hidden py-20 lg:py-28">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-duthCrimson/20 border border-duthCrimson/40 text-rose-300 text-xs font-semibold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-duthCrimson"></span>
+            Τμήμα Διοικητικής Επιστήμης &amp; Τεχνολογίας — ΔΠΘ
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Πρόγραμμα Μεταπτυχιακών Σπουδών <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-300">
+              «Πληροφοριακά Συστήματα»
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+            Αποκτήστε εξειδικευμένες γνώσεις αιχμής στον σχεδιασμό, τη διαχείριση και την ανάπτυξη σύγχρονων πληροφοριακών συστημάτων. 100% Εξ Αποστάσεως Φοίτηση προσαρμοσμένη στις ανάγκες της αγοράς εργασίας.
+          </p>
+
+          <!-- Key Metrics Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-center">
+              <span class="block text-xl font-black text-rose-400">90 ECTS</span>
+              <span class="text-xs text-slate-400 font-medium">Πιστωτικές Μονάδες</span>
+            </div>
+            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-center">
+              <span class="block text-xl font-black text-amber-400">100% Online</span>
+              <span class="text-xs text-slate-400 font-medium">Εξ Αποστάσεως</span>
+            </div>
+            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-center">
+              <span class="block text-xl font-black text-emerald-400">3 Εξάμηνα</span>
+              <span class="text-xs text-slate-400 font-medium">Ελάχιστη Διάρκεια</span>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="admissions.html" class="px-6 py-3.5 rounded-lg bg-duthCrimson hover:bg-duthHover text-white font-bold text-sm shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+              Πρόσκληση 2026-2027
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a href="program.html" class="px-6 py-3.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-colors">
+              Πρόγραμμα Σπουδών
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="bg-slate-900/90 rounded-2xl p-6 border border-slate-800 shadow-2xl relative overflow-hidden">
+            <img src="assets/100_online_bold_transparent.png" alt="100% Online MAIS" class="w-full h-auto object-contain mb-4 filter drop-shadow-lg">
+            <div class="bg-duthCrimson/10 border border-duthCrimson/30 rounded-lg p-4 text-xs text-rose-200">
+              <span class="font-bold block text-sm mb-1 text-white">Πιστοποίηση Ποιότητας ΕΘΑΑΕ</span>
+              Πλήρης συμμόρφωση με τα ευρωπαϊκά και εθνικά πρότυπα διασφάλισης ποιότητας στην ανώτατη εκπαίδευση.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTOR'S WELCOME SECTION -->
+  <section class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-4 text-center">
+          <div class="relative inline-block">
+            <img src="assets/chatzis_photo.jpg" alt="Δρ. Βασίλειος Χατζής" class="w-48 h-48 rounded-full object-cover shadow-xl border-4 border-duthCrimson mx-auto">
+            <span class="absolute bottom-2 right-2 bg-duthCrimson text-white text-xs px-2.5 py-1 rounded-full font-bold">Διευθυντής</span>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-slate-900">Δρ. Βασίλειος Χατζής</h3>
+          <p class="text-xs text-slate-500 font-medium">Καθηγητής, Διευθυντής ΠΜΣ «Πληροφοριακά Συστήματα»</p>
+        </div>
+        <div class="md:col-span-8 space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            Χαιρετισμός Διευθυντή ΠΜΣ
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+            «Καλωσορίσατε στο Πρόγραμμα Μεταπτυχιακών Σπουδών "Πληροφοριακά Συστήματα" του Τμήματος Διοικητικής Επιστήμης και Τεχνολογίας του Δημοκριτείου Πανεπιστημίου Θράκης. Στην εποχή της ψηφιακής μετάβασης και της ραγδαίας εξέλιξης της τεχνητής νοημοσύνης, στόχος μας είναι να προσφέρουμε ένα σύγχρονο, ανταγωνιστικό και ευέλικτο πρόγραμμα σπουδών που προετοιμάζει ηγετικά στελέχη για την ψηφιακή οικονομία.»
+          </p>
+          <div class="pt-2">
+            <a href="faculty.html#chatzis" class="text-duthCrimson font-bold text-sm hover:underline inline-flex items-center gap-1">
+              Περισσότερα για το Διδακτικό Προσωπικό &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE ANNOUNCEMENTS FEED -->
+  <section class="py-16 bg-slateLight">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+        <div>
+          <span class="text-duthCrimson font-bold text-xs uppercase tracking-wider block mb-1">Ενημέρωση &amp; Νέα</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Πρόσφατες Ανακοινώσεις</h2>
+        </div>
+        <a href="contact.html#announcements" class="text-sm font-bold text-slate-600 hover:text-duthCrimson transition-colors flex items-center gap-1">
+          Όλες οι ανακοινώσεις
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Dynamic Announcements Grid -->
+      <div id="announcements-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- JS rendered cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM OBJECTIVES GRID -->
+  <section class="py-16 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-duthCrimson font-bold text-xs uppercase tracking-wider block mb-1">Γιατί να μας επιλέξετε</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Στόχοι &amp; Πλεονεκτήματα Προγράμματος</h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2">
+          Το ΠΜΣ «Πληροφοριακά Συστήματα» προσφέρει ένα ολοκληρωμένο πλαίσιο δεξιοτήτων για την επιτυχή σταδιοδρομία στον τομέα της Τεχνολογίας Πληροφοριών.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">100% Εξ Αποστάσεως</h3>
+          <p class="text-slate-600 text-sm">
+            Παρακολούθηση μαθημάτων μέσω σύγχρονης και ασύγχρονης πλατφόρμας τηλεκπαίδευσης από οποιοδήποτε μέρος.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Εφαρμοσμένη Γνώση</h3>
+          <p class="text-slate-600 text-sm">
+            Σχεδιασμός, διαχείριση και ανάλυση επιχειρησιακών δεδομένων με χρήση σύγχρονων εργαλείων λογισμικού.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Ευέλικτη Φοίτηση</h3>
+          <p class="text-slate-600 text-sm">
+            Δυνατότητα επιλογής μεταξύ Πλήρους Φοίτησης (3 εξάμηνα) ή Μερικής Φοίτησης (6 εξάμηνα) για εργαζόμενους.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            04
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Διαχείριση Καινοτομίας</h3>
+          <p class="text-slate-600 text-sm">
+            Ανάπτυξη ηγετικών και οργανωσιακών δεξιοτήτων για τη λήψη αποφάσεων βάσει δεδομένων (Data-driven decision making).
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            05
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Υποτροπίες &amp; Απαλλαγή</h3>
+          <p class="text-slate-600 text-sm">
+            Δυνατότητα δωρεάν φοίτησης (απαλλαγή τελών) βάσει εισοδηματικών/ακαδημαϊκών κριτηρίων και ανταποδοτικές υποτροπίες.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl border border-slate-200 bg-slateLight hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-lg bg-duthCrimson/10 text-duthCrimson flex items-center justify-center font-bold text-xl mb-4">
+            06
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Αναγνωρισμένο Πτυχίο</h3>
+          <p class="text-slate-600 text-sm">
+            Μεταπτυχιακό Δίπλωμα Σπουδών από το Δημοκρίτειο Πανεπιστήμιο Θράκης με πλήρη ακαδημαϊκή πιστοποίηση ΕΘΑΑΕ.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE LEAD FORM SECTION -->
+  <section class="py-16 bg-techNavy text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-900 p-8 sm:p-10 rounded-2xl border border-slate-800 shadow-2xl">
+        <div class="text-center mb-8">
+          <span class="text-rose-400 font-bold text-xs uppercase tracking-wider block mb-1">Εκδήλωση Ενδιαφέροντος</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Ενδιαφέρεστε για το ΠΜΣ;</h2>
+          <p class="text-slate-400 text-sm mt-2">
+            Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας για να σας ενημερώσουμε σχετικά με τις αιτήσεις και τις προϋποθέσεις εισαγωγής.
+          </p>
+        </div>
+
+        <form id="interest-form" class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-name" class="block text-xs font-semibold text-slate-300 mb-1">Ονοματεπώνυμο *</label>
+              <input type="text" id="form-name" placeholder="π.χ. Μαρία Παπαδοπούλου" class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-duthCrimson text-sm">
+            </div>
+            <div>
+              <label for="form-email" class="block text-xs font-semibold text-slate-300 mb-1">Email *</label>
+              <input type="email" id="form-email" placeholder="name@example.com" class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-duthCrimson text-sm">
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-phone" class="block text-xs font-semibold text-slate-300 mb-1">Τηλέφωνο Επικοινωνίας *</label>
+              <input type="tel" id="form-phone" placeholder="69XXXXXXXX" class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-duthCrimson text-sm">
+            </div>
+            <div>
+              <label for="form-mode" class="block text-xs font-semibold text-slate-300 mb-1">Επιθυμητός Τρόπος Φοίτησης</label>
+              <select id="form-mode" class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-duthCrimson text-sm">
+                <option value="full">Πλήρης Φοίτηση (3 Εξάμηνα)</option>
+                <option value="part">Μερική Φοίτηση (6 Εξάμηνα)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-duthCrimson hover:bg-duthHover text-white font-bold rounded-lg shadow-lg transition-all text-sm mt-4">
+            Υποβολή Εκδήλωσης Ενδιαφέροντος
+          </button>
+
+          <div id="form-feedback" class="hidden"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNOUNCEMENT MODAL POPUP -->
+  <div id="announcement-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+      <button onclick="closeAnnouncementModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="mb-4">
+        <span id="modal-category" class="inline-block px-2.5 py-1 text-xs font-bold rounded-full bg-[#8B1538]/10 text-[#8B1538] mb-2"></span>
+        <h2 id="modal-title" class="text-xl sm:text-2xl font-extrabold text-slate-900"></h2>
+        <span id="modal-date" class="text-xs text-slate-400 font-medium block mt-1"></span>
+      </div>
+
+      <div id="modal-body" class="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed mb-6"></div>
+
+      <div id="modal-attachments" class="pt-4 border-t border-slate-200"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-techNavy text-slate-400 text-sm border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+
+        <!-- Col 1: Brand Info -->
+        <div class="space-y-4">
+          <img src="assets/logo.png" alt="ΔΠΘ MAIS Logo" class="h-12 w-auto bg-white/10 p-1 rounded">
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Δημοκρίτειο Πανεπιστήμιο Θράκης<br>
+            Τμήμα Διοικητικής Επιστήμης και Τεχνολογίας<br>
+            ΠΜΣ «Πληροφοριακά Συστήματα»
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Πλοήγηση</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-white transition-colors">Αρχική</a></li>
+            <li><a href="program.html" class="hover:text-white transition-colors">Πρόγραμμα Σπουδών</a></li>
+            <li><a href="admissions.html" class="hover:text-white transition-colors">Εισαγωγή &amp; Δίδακτρα</a></li>
+            <li><a href="faculty.html" class="hover:text-white transition-colors">Διδάσκοντες</a></li>
+            <li><a href="research.html" class="hover:text-white transition-colors">Έρευνα &amp; Πιστοποίηση</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Επικοινωνία</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Digital Services -->
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Ψηφιακές Υπηρεσίες</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="https://eclass.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">e-Class ΔΠΘ</a></li>
+            <li><a href="https://students.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">Ηλεκτρονική Γραμματεία</a></li>
+            <li><a href="https://cloud.mst.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">MAIS Cloud</a></li>
+            <li><a href="https://lib.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">Βιβλιοθήκη ΔΠΘ</a></li>
+            <li><a href="https://password.duth.gr" target="_blank" rel="noopener" class="hover:text-white transition-colors">Διαχείριση Κωδικών</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Secretariat -->
+        <div>
+          <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Γραμματεία ΠΜΣ</h4>
+          <p class="text-xs text-slate-400 space-y-1">
+            <span>Πανεπιστημιούπολη Καβάλας, 65404</span><br>
+            <span>Τηλ: 2510 462395, 2510 462325</span><br>
+            <span>Email: <a href="mailto:mais@mst.duth.gr" class="text-rose-400 hover:underline">mais@mst.duth.gr</a></span>
+          </p>
+          <div class="flex items-center gap-3 mt-4">
+            <a href="https://www.facebook.com/MscMais/" target="_blank" rel="noopener" class="p-2 bg-slate-800 hover:bg-duthCrimson text-white rounded-md transition-colors" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/msc_mais_duth/" target="_blank" rel="noopener" class="p-2 bg-slate-800 hover:bg-duthCrimson text-white rounded-md transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="http://www.linkedin.com/in/msc-information-systems-248821400/" target="_blank" rel="noopener" class="p-2 bg-slate-800 hover:bg-duthCrimson text-white rounded-md transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+        &copy; 2026 ΠΜΣ «Πληροφοριακά Συστήματα» — Δημοκρίτειο Πανεπιστήμιο Θράκης. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

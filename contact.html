@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Επικοινωνία &amp; Κανονισμοί | ΠΜΣ Πληροφοριακά Συστήματα ΔΠΘ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            duthCrimson: '#8B1538',
+            duthHover: '#9E1B32',
+            techNavy: '#0F172A',
+            slateLight: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slateLight text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ACTIVE STUDENT QUICK PORTAL SHORTCUT BAR -->
+  <div class="bg-techNavy text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Πύλη Φοιτητών &amp; Ψηφιακές Υπηρεσίες:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-semibold">
+        <a href="https://eclass.mst.duth.gr" target="_blank" class="hover:text-white">e-Class</a>
+        <a href="https://mail.google.com" target="_blank" class="hover:text-white">Webmail</a>
+        <a href="https://students.duth.gr" target="_blank" class="hover:text-white">ClassWeb</a>
+        <a href="https://cloud.mst.duth.gr" target="_blank" class="hover:text-white">MAIS Cloud</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="ΔΠΘ MAIS Logo" class="h-12 w-auto object-contain">
+          <div class="hidden sm:block border-l border-slate-300 pl-3">
+            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Δημοκρίτειο Πανεπιστήμιο Θράκης</span>
+            <span class="block text-sm font-extrabold text-slate-900">ΠΜΣ Πληροφοριακά Συστήματα</span>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+          <a href="index.html" class="text-slate-700 hover:text-duthCrimson">Αρχική</a>
+          <a href="program.html" class="text-slate-700 hover:text-duthCrimson">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html" class="text-slate-700 hover:text-duthCrimson">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html" class="text-slate-700 hover:text-duthCrimson">Διδάσκοντες</a>
+          <a href="research.html" class="text-slate-700 hover:text-duthCrimson">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html" class="text-duthCrimson font-bold border-b-2 border-duthCrimson pb-1">Επικοινωνία</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="admissions.html" class="px-5 py-2.5 rounded-lg bg-duthCrimson text-white font-bold text-sm shadow">
+            Αίτηση 2026-2027
+          </a>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 text-slate-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT MENU DRAWER -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex-col justify-end sm:justify-start">
+    <div class="bg-white w-full max-w-sm ml-auto h-full p-6 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-200">
+          <img src="assets/logo.png" alt="MAIS Logo" class="h-10 w-auto">
+          <button id="close-mobile-menu" class="p-2 text-slate-500 hover:text-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-4 font-semibold text-slate-700">
+          <a href="index.html">Αρχική</a>
+          <a href="program.html">Πρόγραμμα Σπουδών</a>
+          <a href="admissions.html">Εισαγωγή &amp; Δίδακτρα</a>
+          <a href="faculty.html">Διδάσκοντες</a>
+          <a href="research.html">Έρευνα &amp; Πιστοποίηση</a>
+          <a href="contact.html" class="text-duthCrimson font-bold">Επικοινωνία</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="bg-techNavy text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-rose-400 font-bold text-xs uppercase tracking-wider block mb-2">Γραμματεία &amp; Τοποθεσία</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold">Επικοινωνία &amp; Κανονισμοί</h1>
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+        Βρείτε τα στοιχεία επικοινωνίας της Γραμματείας, ώρες εξυπηρέτησης, τοποθεσία στο χάρτη και επίσημα έγγραφα κανονισμών.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+    <!-- CONTACT INFO & MAP GRID -->
+    <div class="grid lg:grid-cols-12 gap-8">
+
+      <!-- CONTACT DETAILS -->
+      <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+        <div>
+          <span class="text-duthCrimson font-bold text-xs uppercase tracking-wider block mb-1">Στοιχεία Γραμματείας</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Δημοκρίτειο Πανεπιστήμιο Θράκης</h2>
+          <p class="text-xs text-slate-500 font-semibold mt-1">Τμήμα Διοικητικής Επιστήμης &amp; Τεχνολογίας</p>
+        </div>
+
+        <div class="space-y-4 text-xs text-slate-700">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-duthCrimson shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Διεύθυνση:</strong>
+              Πανεπιστημιούπολη Καβάλας, Άγιος Λουκάς, 65404 Καβάλα
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-duthCrimson shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Τηλέφωνα Επικοινωνίας:</strong>
+              2510 462395 | 2510 462325
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-duthCrimson shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Ηλεκτρονικό Ταχυδρομείο:</strong>
+              <a href="mailto:mais@mst.duth.gr" class="text-duthCrimson hover:underline font-bold">mais@mst.duth.gr</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-duthCrimson shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Υπεύθυνες Γραμματείας:</strong>
+              Φωτιάδου Τζούλια | Βεργοπούλου Όλγα (Προϊσταμένη)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMBEDDED MAP PLACEHOLDER -->
+      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+        <div class="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+          <span class="font-bold text-xs text-slate-700">Χάρτης Πρόσβασης - Πανεπιστημιούπολη Καβάλας</span>
+          <span class="text-xs text-slate-400">ΔΠΘ</span>
+        </div>
+        <div class="w-full h-80 bg-slate-200 relative flex items-center justify-center">
+          <iframe
+            title="DUTH Kavala Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.65313939109!2d24.3853154!3d40.9233087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aec03328e7d23d%3A0x6e788737bb5231c!2sInternational%20Hellenic%20University%20-%20Kavala%20Campus!5e0!3m2!1sen!2sgr!4v1680000000000!5m2!1sen!2sgr"
+            class="w-full h-full border-0"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REGULATIONS & DOWNLOADS -->
+    <section class="bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+      <div>
+        <span class="text-duthCrimson font-bold text-xs uppercase tracking-wider block mb-1">Θεσμικό Πλαίσιο</span>
+        <h2 class="text-2xl font-extrabold text-slate-900">Κανονισμοί Σπουδών &amp; Έντυπα</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+
+        <a href="#" class="p-4 rounded-xl border border-slate-200 bg-slateLight hover:bg-slate-100 transition-colors flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Κανονισμός Σπουδών ΠΜΣ</strong>
+              <span class="text-slate-500">Έκδοση 2025 (PDF)</span>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </a>
+
+        <a href="#" class="p-4 rounded-xl border border-slate-200 bg-slateLight hover:bg-slate-100 transition-colors flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Κανονισμός Εκπόνησης Διπλωματικών</strong>
+              <span class="text-slate-500">Οδηγίες &amp; Πρότυπα (PDF)</span>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </a>
+
+        <a href="#" class="p-4 rounded-xl border border-slate-200 bg-slateLight hover:bg-slate-100 transition-colors flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-duthCrimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 012.828 0L19.828 4.172a2 2 0 010 2.828l-8.486 8.486L7 16l1.414-4.243L16.914 3.343z"/></svg>
+            <div>
+              <strong class="block text-slate-900">Έντυπο Υποβολής Παραπόνων</strong>
+              <span class="text-slate-500">Αίτηση Φοιτητή (DOCX)</span>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-techNavy text-slate-400 text-sm border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-xs text-slate-500">
+      &copy; 2026 ΠΜΣ «Πληροφοριακά Συστήματα» — Δημοκρίτειο Πανεπιστήμιο Θράκης.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
